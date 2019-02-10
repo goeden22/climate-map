@@ -1,0 +1,24 @@
+@import './typohgraphy.scss';
+$primaryFont: 'Open sans';
+$secondaryFont: 'Montserrat';
+
+.primaryHeader{
+    font-family: $primaryFont;
+    &--large{
+        font-weight: 300;
+        font-size: 32px;
+    }
+    &--slarge{
+        font-weight: 300;
+        font-size: 22px;
+    }
+    &--medium{
+        font-weight: 400;
+        font-size: 19px
+    }
+    &--smedium{
+        font-weight: 400;
+        font-size: 13px
+    }
+    
+}
