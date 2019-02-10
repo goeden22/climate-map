@@ -1,24 +1,49 @@
-@import './typohgraphy.scss';
-$primaryFont: 'Open sans';
-$secondaryFont: 'Montserrat';
+@import './typography.scss';
+@import './spacing.scss';
 
-.primaryHeader{
-    font-family: $primaryFont;
-    &--large{
-        font-weight: 300;
-        font-size: 32px;
-    }
-    &--slarge{
-        font-weight: 300;
-        font-size: 22px;
-    }
-    &--medium{
-        font-weight: 400;
-        font-size: 19px
-    }
-    &--smedium{
-        font-weight: 400;
-        font-size: 13px
-    }
-    
+@mixin transition($property) {
+-webkit-transition: $property;
+-moz-transition: $property;
+-o-transition: $property;
+transition: $property;
+}
+
+body,html{
+    margin: 0;
+    padding: 0;
+}
+
+/* TOPNAV*/
+.topNav{
+  background-color: $primaryLight; 
+    width: 100%;
+  &__container{
+    display: inline-flex;
+    width: 1200px;
+  }
+  &__logoContainer{
+      background-color: $primaryDark
+  }
+  &__option{
+      @include transition(background-color 0.3s ease-out);
+      cursor: pointer;
+      display: inline-flex;
+      padding: $mediumSpace 0;
+      border-right: 1px solid $lshaded;
+      justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  &__logoContainer{
+      @extend .topNav__option;
+      cursor: auto;
+  }
+  &__icon{
+      margin-left: $mediumSpace;
+      width: 32px;
+      height: 32px;
+  }
+}
+.activeOption{
+    background-color: $primaryShaded;
 }

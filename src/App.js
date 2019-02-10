@@ -14,11 +14,24 @@ WebFont.load({
 
 
 class App extends Component {
+  constructor(props){
+    super(props)       
+    this.state ={
+      mode: ""
+    }
+    
+    this.modeSelect = (mode) =>{
+      this.setState({mode})
+    }
+    this.handleClick = () => {
+      console.log(this.state.mode)
+    }
+}
   render() {
     return (
       <div className="App">
-       <TopNav />
-      </div>
+       <TopNav onModeChange={this.modeSelect.bind(this)}/>
+      </div> 
     );
   }
 }

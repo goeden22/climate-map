@@ -1,2 +1,62 @@
 /*TYPOGRAPHY*/
-@import './variables.scss';
+$primaryFont: 'Open sans';
+$secondaryFont: 'Montserrat';
+$light: 300;
+$regular: 400;
+$bold: 700;
+
+$lshaded: #d7d7d7;
+$shaded: #c4c4c4;
+$primaryDark: #2f3544;
+$primaryLight: #f8f8f8;
+$primaryShaded: #e9e9f0;
+
+.primaryHeader{
+    font-family: $primaryFont;
+    color:$primaryDark;
+    margin: 0;
+    &--large{
+        font-weight: $light;
+        font-size: 32px;
+    }
+    &--slarge{
+        font-weight: $light;
+        font-size: 22px;
+    }
+    &--medium{
+        font-weight: $regular;
+        font-size: 19px
+    }
+    &--smedium{
+        font-weight: $regular;
+        font-size: 13px
+    }
+    &--small{
+        @extend .primaryHeader--medium;
+    }
+    &--ssmall{
+        font-weight: $light;
+        font-size:12px;
+    }
+    &--shaded{
+        font-weight: $regular;
+        font-size: 18px;
+        color: $shaded ; 
+    }
+    &--sshaded{
+        font-weight: $regular;
+        font-size: 13px;
+        color: $shaded;
+    }
+}
+.secondaryHeader{
+    margin: 0;
+    font-family: $secondaryFont;
+    font-weight: $regular;
+    font-size: 18px;
+    color: $primaryDark;
+    text-transform: uppercase;
+    &--logo{
+        color:white;
+    }
+}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../App.css';
+import '../App.scss';
 
 class TopNavOption extends Component {
     constructor(props){
@@ -7,8 +7,8 @@ class TopNavOption extends Component {
     }
     render() {
         return (
-            <div class="topNav__option">
-                <h2 class="topNav__label">{this.props.option}</h2>
+            <div className={"topNav__option" + (this.props.active ? ' activeOption' : '')} name={this.props.option}>
+                <h2 className="secondaryHeader">{this.props.option}</h2>
                 <img src={this.props.icon} class="topNav__icon"></img>
             </div>
         );
