@@ -1,4 +1,5 @@
 /*TYPOGRAPHY*/
+@import './spacing.scss';
 $primaryFont: 'Open sans';
 $secondaryFont: 'Montserrat';
 $light: 300;
@@ -39,7 +40,7 @@ $primaryShaded: #e9e9f0;
         font-size:12px;
     }
     &--shaded{
-        font-weight: $regular;
+        font-weight: $light;
         font-size: 18px;
         color: $shaded ; 
     }
@@ -59,4 +60,11 @@ $primaryShaded: #e9e9f0;
     &--logo{
         color:white;
     }
+}
+.primaryParagraph{
+    font-family: $primaryFont;
+    font-weight: $light;
+    font-size:14px;
+    color: $primaryDark;
+    padding-bottom: $largeSpace;
 }
