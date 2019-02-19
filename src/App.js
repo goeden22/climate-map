@@ -6,6 +6,7 @@ import WebFont from 'webfontloader';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import MapContainer from './components/MapContainer'
 import LargeTile from './components/LargeTile'
+import SmallTiles from './components/SmallTiles'
 
 WebFont.load({
   google: {
@@ -28,14 +29,18 @@ class App extends Component {
     this.modeSelect = (mode) =>{
       this.setState({mode});
     }
+    this.handleClick = function(){
+      console.log("this.country")
+    }
 }
   render() {
-
+    const mode = this.state.mode
     return (
       <div className="App">
-       <TopNav onModeChange={this.modeSelect.bind(this)}/>
+       <TopNav onModeChange={this.modeSelect.bind(this)} />
        <MapContainer lat={this.state.lat} lng={this.state.lng} />
-       <LargeTile />
+        {mode == "search" ? <LargeTile /> : mode == "explore" ? <SmallTiles  /> : null}
+       
       </div> 
     );
   }

@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import '../App.scss';
 import norway from '../img/jpg/norway.jpg';
+import people from '../img/svg/avatar.svg';
+import time from '../img/svg/time-left.svg';
+import weather from '../img/svg/cloud.svg';
+import temperature from '../img/svg/thermometer.svg'
 
 
 class LargeTile extends Component {
@@ -18,14 +22,14 @@ class LargeTile extends Component {
                     <h1 class="primaryHeader primaryHeader--large">Oslo</h1>
                     <h1 class="primaryHeader primaryHeader--shaded">Norway</h1>
                     <div class="largeTile__icons">
-                        <img src="" alt="" class="largeTile__icon"></img>
+                        <img src={people} alt="" class="largeTile__icon"></img>
                         <h1 class="primaryHeader primaryHeader--medium">673k</h1>
-                        <img src="" alt="" class="largeTile__icon"></img>
+                        <img src={time} alt="" class="largeTile__icon"></img>
                         <h1 class="primaryHeader primaryHeader--medium">UTC+1</h1>
-                        <img src="" alt="" class="largeTile__icon"></img>
+                        <img src={weather} alt="" class="largeTile__icon"></img>
                         <h1 class="primaryHeader primaryHeader--medium">Cloudy</h1>
-                        <img src="" alt="" class="largeTile__icon"></img>
-                        <h1 class="primaryHeader primaryHeader--medium">3C</h1>
+                        <img src={temperature} alt="" class="largeTile__icon"></img>
+                        <h1 class="primaryHeader primaryHeader--temperature">3°C</h1>
                     </div>
                     <hr class="separator"></hr>
                     <h1 class="primaryHeader primaryHeader--small">Info:</h1>

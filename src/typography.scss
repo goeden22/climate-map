@@ -23,21 +23,25 @@ $primaryShaded: #e9e9f0;
     &--slarge{
         font-weight: $light;
         font-size: 22px;
+        padding-top: $smallSpace;
     }
     &--medium{
         font-weight: $regular;
-        font-size: 19px
+        font-size: 19px;
+        margin-right: $mediumSpace;
     }
     &--smedium{
         font-weight: $regular;
-        font-size: 13px
+        font-size: 15px;
+        margin-right: $mediumSpace;
     }
     &--small{
         @extend .primaryHeader--medium;
     }
     &--ssmall{
         font-weight: $light;
-        font-size:12px;
+        font-size:13px;
+        padding-bottom: $smallSpace;
     }
     &--shaded{
         font-weight: $light;
@@ -46,8 +50,19 @@ $primaryShaded: #e9e9f0;
     }
     &--sshaded{
         font-weight: $regular;
-        font-size: 13px;
+        font-size: 14px;
         color: $shaded;
+    }
+    &--temperature{
+        font-family: $secondaryFont;
+        color: #96daf0;
+        font-size: 20px;
+    }
+    &--stemperature{
+        font-family: $secondaryFont;
+        color: #96daf0;
+        font-size: 35px;
+        padding-bottom: $mediumSpace;
     }
 }
 .secondaryHeader{

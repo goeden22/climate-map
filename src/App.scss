@@ -12,6 +12,7 @@ body,html{
     margin: 0;
     padding: 0;
     height:100%;
+    overflow: hidden;
 }
 
 #root, .App{
@@ -62,6 +63,7 @@ body,html{
 .mapContainer{
     height: 100%;
     width:100%;
+    cursor: crosshair;
 }
 #map{
     height: 500px;
@@ -83,9 +85,9 @@ body,html{
         width:580px;
         background-color:$primaryLight;
         border-bottom: 15px solid $primaryDark;
-        -webkit-box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.25);
-        -moz-box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.25);
-        box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.25);
+        -webkit-box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.3);
+        -moz-box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.3);
+        box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.3);
     }
     &__img{
         width: 100%;
@@ -95,10 +97,67 @@ body,html{
         display: flex;
         padding-top:$mediumSpace;
     }
+    &__icon{
+        height: 32px;
+        margin-right: $smallSpace;
+    }
 }
 .separator{
     margin: $mediumSpace 0;
     border: none;
     height: 1px;
     background-color: $lshaded;
+}
+.smallTiles{
+    position: absolute;
+    width: 290px;
+    right: 5%;
+    top:25px;
+    height: 850px;
+    overflow:hidden;
+    &__container{
+        @extend .largeTile;
+        flex-direction: column;
+        width:290px;
+        left:0;
+        top:0;
+        right: 5%;
+        height: 6700px;
+        @include transition(transform 5s ease-out);
+    }
+    &__text{
+        padding: $smallSpace $mediumSpace;
+    }
+    &__tile{
+        @extend .largeTile__tile;
+        cursor: pointer;
+        width: 290px;
+        border-bottom: 7px solid $primaryDark;
+        margin-bottom: $largeSpace;
+        min-height: 393px;
+        background-color: #e5e5e5;
+        @include transition(background-color 0.15s ease-out);
+        
+        &:hover{
+            background-color: $primaryLight
+        }
+    }
+    &__icons{
+        @extend .largeTile__icons;
+        padding-top: $mediumSpace;
+    }
+    &__img{
+        @extend .largeTile__img;
+    }
+    &__info{
+        display: flex;
+        justify-content: space-between;
+    }
+    &__icon{
+        height: 23px;
+        margin-right: $smallSpace;
+    }
+    &__iconL{
+        height: 40px;
+    }
 }
