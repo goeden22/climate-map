@@ -11,7 +11,7 @@ class SmallTiles extends Component {
         this.state = {
             places: places.places,
             position: 0,
-            interval: 6000,
+            interval: 3000,
             tileHeight: 450,
             direction: -1,
             stop: false
@@ -58,6 +58,7 @@ class SmallTiles extends Component {
     render() {
 
         return (
+
             <div className="smallTiles" >
                 <div className="smallTiles__container" ref={this.Container} style={{transform: `translateY(${this.state.position}px)`}} onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut}>
                     {this.state.places.map((place,i) => {

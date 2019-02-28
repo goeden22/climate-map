@@ -14,7 +14,7 @@ class SmallTile extends Component {
 
     }
     render() {
-        return (
+        return ( 
             <div class="smallTiles__tile" >
             <img src={norwaySmall} alt="" class="smallTiles__img"></img>
             <div className="smallTiles__text">
