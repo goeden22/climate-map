@@ -74,7 +74,6 @@ class App extends Component {
         return fetch(`https://us1.locationiq.com/v1/reverse.php?key=fa6fb95ab37515&lat=${this.state.coords.lat}&lon=${this.state.coords.lng}&format=json`)
       })
         .then(data => {
-          console.log(data)
           if(!data.ok){
             throw new Error("error")
           }

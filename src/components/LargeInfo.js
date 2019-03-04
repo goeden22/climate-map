@@ -34,7 +34,7 @@ class LargeInfo extends Component {
 
             <div className="largeTile__content">
 
-                <img src={norway} alt="" class="largeTile__img"></img>
+                <img src={require(`../img/jpg/${this.state.data.country.replace(/\s+/g,"").toLowerCase()}.jpg`) || norway} alt="" class="largeTile__img"></img>
                 <div className="largeTile__text">
                     <h1 class="primaryHeader primaryHeader--large">{this.state.data.city || this.state.data.village || this.state.data.county || "Countryside"}</h1>
                     <h1 class="primaryHeader primaryHeader--shaded">{this.state.data.country}</h1>

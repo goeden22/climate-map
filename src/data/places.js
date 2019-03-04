@@ -1,48 +1,64 @@
+
 let places = [
     {
-        country: "norway"
+        country: "Norway",
+        city: "Oslo"
     },
     {
-        country: "australia"
+        country: "Italy",
+        city: "Venice"
     },
     {
-        country: "poland"
+        country: "United States",
+        city: "New York"
     },
     {
-        country: "uk"
+        country: "Russia",
+        city: "Moscow"
     },
     {
-        country: "iceland"
+        country: "Lebanon",
+        city: "Beirut"
     },
     {
-        country: "japan"
+        country: "Japan",
+        city: "Kyoto"
     },
     {
-        country: "zanzibar"
+        country: "New Zealand",
+        city: "Queenstown"
     },
     {
-        country: "etiopia"
+        country: "Cuba",
+        city: "Havana"
     },
     {
-        country: "vietnam"
+        country: "India",
+        city:"Jaipur"
     },
     {
-        country: "usa"
+        country: "PRC",
+        city: "Shanghai"
     },
     {
-        country: "canada"
+        country: "Hungary",
+        city: "Budapest"
     },
     {
-        country: "georgia"
+        country: "Canada",
+        city:"Quebec",
     },
     {
-        country: "russia"
+        country: "Portugal",
+        city:"Lisbon",
     },
     {
-        country: "thailand"
+        country: "South Korea",
+        city: "Busan"
     },
     {
-        country: "dubai"
+        country: "Croatia",
+        city: "Dubrovnik"
     },
 ]
 module.exports = {places}

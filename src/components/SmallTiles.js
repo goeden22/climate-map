@@ -62,7 +62,7 @@ class SmallTiles extends Component {
             <div className="smallTiles" >
                 <div className="smallTiles__container" ref={this.Container} style={{transform: `translateY(${this.state.position}px)`}} onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut}>
                     {this.state.places.map((place,i) => {
-                        return <SmallTile number={i}/>
+                        return <SmallTile country={place.country} city={place.city} img={place.img}/>
                     })}
                 </div>
             </div>
