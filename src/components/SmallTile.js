@@ -12,7 +12,7 @@ class SmallTile extends Component {
     constructor(props) {
         super(props);
 
-        this.setImg = (country, city, exclusiveCity, exclusiveCountry) => {
+        this.setImg = (country, city) => {
            let exCity = exclusiveCity.filter(exclusive => {
               return exclusive.replace(/\s+/g,"").toLowerCase() == city.replace(/\s+/g,"").toLowerCase()
            })
@@ -29,15 +29,19 @@ class SmallTile extends Component {
             return 'default'
         }
 
+        this.handleClick = () => {
+            this.props.handleClick(this.props.place.coords)
+        }
+
     }
     render() {
     
         return ( 
-            <div class="smallTiles__tile" >
-            <img src={require(`../img/jpg/${this.setImg(this.props.country, this.props.city, exclusiveCity, exclusiveCountry)}-small.jpg`)} alt="" class="smallTiles__img"></img>
+            <div class="smallTiles__tile" onClick={this.handleClick}>
+            <img src={require(`../img/jpg/${this.setImg(this.props.place.country, this.props.place.city)}-small.jpg`)} alt="" class="smallTiles__img"></img>
             <div className="smallTiles__text">
-                <h1 class="primaryHeader primaryHeader--slarge">{this.props.city}</h1>
-                <h1 class="primaryHeader primaryHeader--sshaded">{this.props.country}</h1>
+                <h1 class="primaryHeader primaryHeader--slarge">{this.props.place.city}</h1>
+                <h1 class="primaryHeader primaryHeader--sshaded">{this.props.place.country}</h1>
                 <div class="smallTiles__icons">
                     <img src={people} alt="" class="smallTiles__icon"></img>
                     <h1 class="primaryHeader primaryHeader--smedium">673k</h1>

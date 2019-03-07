@@ -1,6 +1,6 @@
 let exclusiveCity = [
     "New York",
-    "Beirut",
+    "Mussaitbeh",
     "Jaipur",
     "Shanghai",
     "Budapest",
@@ -18,7 +18,7 @@ let exclusiveCountry = [
     "Norway",
 
  
-    "China", //ina", //
+    "PRC", //ina", //
     "India", //
     "Japan", //
     "South Korea", //
@@ -34,236 +34,257 @@ let exclusiveCountry = [
     "New Zealand",//
 ]
 
-let groups = {
-    portugalspain: [
-        "Portugal", //
-        "Spain", //
-    ],
-    unitedkington : [
-        "United Kingdom", //
-        "Ireland",
-    ],
-    subsaharian: [
-        "Angola",
-        "Burundi",
-        "Congo",
-        "Equatorial Guinea",
-        "Gabon",
-        "Kenya",
-        "Nigeria",
-        "Rwanda",
-        "Sao Tome and Principe",
-        "Tanzania",
-        "Uganda",
-        "Djibouti",
-        "Somalia",
-        "Botswana",
-        "Comoros",
-        "Lesotho",
-        "Madagascar",
-        "Malawi",
-        "Mauritius",
-        "Mozambique",
-        "Namibia",
-        "Senegal",
-        "Seychelles",
-        "South Africa",
-        "Swaziland",
-        "Zambia",
-        "Zimbabwe",
-        "Benin",
-        "Cape Verde",
-        "Ivory Coast",
-        "Cameroon",
-        "Central African Republic",
-        "Gambia",
-        "Ghana",
-        "Guinea",
-        "Guinea-Bissau",
-        "Liberia",
-        "Sierra Leone",
-        "Togo",
+let groups = [
+    {
+        name:"portugalspain",
+        countries:[
+            "portugal", //
+            "spain", //
+        ]
+    },
+    {
+        name:"unitedkingdom",
+        countries: ["unitedkingdom", //
+        "ireland",]
+    },
+    {name: "subsaharian",
+    countries: ["angola",
+    "burundi",
+    "drcongo",
+    "equatorialguinea",
+    "gabon",
+    "kenya",
+    "nigeria",
+    "rwanda",
+    "saotomeandprincipe",
+    "tanzania",
+    "uganda",
+    "djibouti",
+    "somalia",
+    "botswana",
+    "comoros",
+    "lesotho",
+    "madagascar",
+    "malawi",
+    "mauritius",
+    "mozambique",
+    "namibia",
+    "senegal",
+    "seychelles",
+    "southafrica",
+    "swaziland",
+    "zambia",
+    "zimbabwe",
+    "benin",
+    "capeverde",
+    "ivoryCoast",
+    "cameroon",
+    "centralafricanrepublic",
+    "gambia",
+    "ghana",
+    "guinea",
+    "guinea-Bissau",
+    "liberia",
+    "sierra Leone",
+    "togo",]}
+    ,
+    {
+        name: "desert",
+        countries: [
+            "mauritania",
+            "algeria",
+            "libya",
+            "egypt",
+            "southsudan",
+            "sudan",
+            "chad",
+            "niger",
+            "mali",
+            "burkina",
+            "ethiopia",
+            "eritrea",
+            "saudiarabia",
+            "yemen",
+            "oman",
+            "unitedarabemirates",
+            "iran",
+            "iraq",
+            "israel",
+            "morocco",
+            "tunisia",
+            "afghanistan",
+            "pakistan",
+            "qatar",
+            "bahrain",
+            "ayria",
+            "jordan",
+            "kuwait",
+            "lebanon", //
+        ]
+    },
 
-    ],
+    {
+        name:"europemountains",
+        countries: [
+            "switzerland",
+        "france",
+        "austria",
 
-    desert: [
-        "Ivory Coast",
-        "Mauritania",
-        "Algeria",
-        "Libya",
-        "Egypt",
-        "South Sudan",
-        "Sudan",
-        "Chad",
-        "Niger",
-        "Mali",
-        "Burkina",
-        "Ethiopia",
-        "Eritrea",
-        "Saudi Arabia",
-        "Yemen",
-        "Oman",
-        "United Arab Emirates",
-        "Iran",
-        "Iraq",
-        "Israel",
-        "Morocco",
-        "Tunisia",
-        "Afghanistan",
-        "Pakistan",
-        "Qatar",
-        "Bahrain",
-        "Syria",
-        "Jordan",
-        "Kuwait",
-        "Lebanon", //
-    ],
-    europemountains : [
-        "Switzerland",
-        "France",
-        "Austria",
-    ],
-    europe: [
-        
-        "Albania",
-        "Andorra",
-        "Armenia",
-        //
-        "Azerbaijan",
-        "Belarus",
-        "Belgium",
-        "Bosnia and Herzegovina",
-        "Bulgaria",
-        "Turkey", //
-        "Cyprus",
-        "Czech Republic",
-        "Denmark",
-        "Estonia",
-        
-        "Georgia",
-        "Germany",
+        ]
+    },
+    {
+        name: "europe",
+        countries: [
+            "albania",
+            "andorra",
+            "armenia",
+            //
+            "azerbaijan",
+            "belarus",
+            "belgium",
+            "b&h",
+            "bulgaria",
+            "turkey", //
+            "cyprus",
+            "czechrepublic",
+            "denmark",
+            "estonia",
+            
+            "georgia",
+            "germany",
+    
+            "hungary",
+           
+    
+            "latvia",
+            "liechtenstein",
+            "lithuania",
+            "luxembourg",
+            "macedonia",
+    
+            "moldova",
+            "monaco",
+            "montenegro",
+            "netherlands",
+            "norway",
+            "poland",
+    
+            "romania",
+            "sanmarino",
+            "serbia",
+            "slovakia",
+            "slovenia",
+    
+            
+            "ukraine",
+    
+            "vaticancity",
+        ]
+    },
+    
+    {
+        name: "mountains",
+        countries: [
+            "kazakhstan",
+            "kyrgyzstan",
+            "tajikistan",
+            "turkmenistan",
+            "mongolia",
+    
+            "uzbekistan",
+            "bhutan",
+            "nepal",
+    
+        ]
+    },
+    {
+        name: "southeastasia",
+        countries: [
+            "burma",
+            "cambodia",
+            "vietnam",
+            "thailand",
+            "malaysia",
+            "laos",
+            "bangladesh",
+        ]
+    },
 
-        "Hungary",
-       
+    {
+        name: "tropical",
+        countries: ["belize",
+        "costarica",
+        "elsalvador",
+        "ecuador",
+        "guatemala",
+        "honduras",
+        "nicaragua",
+        "panama",
+        "saintkittsandnevis",
+        "saintlucia",
+        "saintvincentandthegrenadines",
+        "trinidadandtobago",
+        "grenada",
+        "antiguaandbarbuda",
+        "bahamas",
+        "barbados",
+        "dominica",
+        "dominicanrepublic",
+        "haiti",//
+        "jamaica",]
 
-        "Latvia",
-        "Liechtenstein",
-        "Lithuania",
-        "Luxembourg",
-        "Macedonia",
+    },
+    {
+        name:"oceania",
+        countries:[
+            "australia",//
+        "fiji",
+        "liribati",
+        "marshallislands",
+        "micronesia",
+        "nauru",
+        "palau",
+        "papuanewguinea",
+        "samoa",
+        "solomonislands",
+        "tonga",
+        "tuvalu",
+        "vanuatu",
+        "brunei",
+        "indonesia",
+        "easttimor",
+        "maldives",
+        "philippines",
+        "srilanka",
+        ]
+    },
+    {
+        name:"southamerica",
+        countries: [
+            "argentina",
+            "bolivia",
+            "brazil",
+            "chile",
+            "colombia",
+            "guyana",
+            "paraguay",
+            "peru",
+            "suriname",
+            "uruguay",
+            "venezuela"
+        ]
+    },
+    {
+        name:"cold",
+        countries:[
+            "greenland",
+            "sweden",
+            "finland",
+            "iceland",
+        ]
+    }
 
-        "Moldova",
-        "Monaco",
-        "Montenegro",
-        "Netherlands",
-        "Norway",
-        "Poland",
+    
 
-        "Romania",
-        "San Marino",
-        "Serbia",
-        "Slovakia",
-        "Slovenia",
-
-        
-        "Ukraine",
-
-        "Vatican City",
-
-    ],
-
-
-    mountains: [
-        "Kazakhstan",
-        "Kyrgyzstan",
-        "Tajikistan",
-        "Turkmenistan",
-        "Mongolia",
-
-        "Uzbekistan",
-        "Bhutan",
-        "Nepal",
-
-    ],
-
-    southEastAsia: [
-
-        "Burma",
-        "Cambodia",
-        "Vietnam",
-        "Thailand",
-        "Malaysia",
-        "Laos",
-        "Bangladesh",
-    ],
-    tropical: [
-        "Belize",
-        "Costa Rica",
-        "El Salvador",
-        "Ecuador",
-        "Guatemala",
-        "Honduras",
-        "Nicaragua",
-        "Panama",
-        "Saint Kitts and Nevis",
-        "Saint Lucia",
-        "Saint Vincent and the Grenadines",
-        "Trinidad and Tobago",
-        "Grenada",
-        "Antigua and Barbuda",
-        "Bahamas",
-        "Barbados",
-        "Dominica",
-        "Dominican Republic",
-        "Haiti",//
-        "Jamaica",//
-    ],
-
-
-    oceania: [
-
-        "Australia",//
-        "Fiji",
-        "Kiribati",
-        "Marshall Islands",
-        "Micronesia",
-        "Nauru",
-
-        "Palau",
-        "Papua New Guinea",
-        "Samoa",
-        "Solomon Islands",
-        "Tonga",
-        "Tuvalu",
-        "Vanuatu",
-        "Brunei",
-        "Indonesia",
-        "East Timor",
-        "Maldives",
-        "Philippines",
-        "Sri Lanka",
-
-    ],
-    southAmerica: [
-
-        "Argentina",
-        "Bolivia",
-        "Brazil",
-        "Chile",
-        "Colombia",
-        "Guyana",
-        "Paraguay",
-        "Peru",
-        "Suriname",
-        "Uruguay",
-        "Venezuela"
-
-    ], cold: [
-        "greenland",
-        "Sweden",
-        "Finland",
-        "Iceland",
-    ],
-}
-
+]
 module.exports = {exclusiveCity, groups, exclusiveCountry}

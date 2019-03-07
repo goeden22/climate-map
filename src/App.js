@@ -25,7 +25,7 @@ class App extends Component {
         lat: 51.505,
         lng: -0.09,
       },
-      zoom: 5,
+      zoom: 2,
       alreadySearched: false,
       currentLocation: null,
       validationError: false,
@@ -71,7 +71,8 @@ class App extends Component {
         return false
       })
       .then(() => {
-        return fetch(`https://us1.locationiq.com/v1/reverse.php?key=fa6fb95ab37515&lat=${this.state.coords.lat}&lon=${this.state.coords.lng}&format=json`)
+        console.log(this.state.coords)
+        return fetch(`https://us1.locationiq.com/v1/reverse.php?key=fa6fb95ab37515&lat=${this.state.coords.lat}&lon=${this.state.coords.lng}&format=json&accept-language=en`)
       })
         .then(data => {
           if(!data.ok){
@@ -135,7 +136,7 @@ class App extends Component {
       if(this.state.mode != "point"){
         return false
       }
-      console.log('bla')
+      
       this.setState({
         coords: e.latlng,
         error: false,
@@ -144,14 +145,24 @@ class App extends Component {
       this.APIChain();
     
     }
+     
+    this.setFromGallery = (coords) => {
+      if(this.state.mode != "explore"){
+        return false
+      }
+      this.setState({coords, error: false, loading: true}, this.APIChain)
+
+    }
   }
+
+  
   render() {
     const mode = this.state.mode
     return (
       <div className="App">
         <TopNav onModeChange={this.modeSelect.bind(this)} handleSubmit={this.handleSubmit.bind(this)} />
         <MapContainer lat={this.state.coords.lat} lng={this.state.coords.lng} handleClick={this.handleClick.bind(this)} />
-        {mode == "search" || mode == "point" ? <LargeTile alreadySearched={this.state.alreadySearched} mode={this.state.mode} data={this.state.currentLocation} loading={this.state.loading} error={this.state.error}/> : mode == "explore" ? <SmallTiles /> : null}
+        <LargeTile alreadySearched={this.state.alreadySearched} mode={this.state.mode} data={this.state.currentLocation} loading={this.state.loading} error={this.state.error}/> {mode == "explore" ? <SmallTiles handleClick={this.setFromGallery.bind(this)} /> : null}
 
       </div>
     );

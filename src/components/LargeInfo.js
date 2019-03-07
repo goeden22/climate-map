@@ -5,6 +5,7 @@ import people from '../img/svg/avatar.svg';
 import time from '../img/svg/time-left.svg';
 import weather from '../img/svg/cloud.svg';
 import temperature from '../img/svg/thermometer.svg';
+import {exclusiveCity, exclusiveCountry, groups} from '../data/validationList';
 
 
 
@@ -17,7 +18,7 @@ class LargeInfo extends Component {
                 city: this.props.data.city || undefined,
                 village: this.props.data.village || undefined,
                 county: this.props.data.county || "countryside",
-                country: this.props.data. country || "undefined",
+                country: this.props.data.country || "undefined",
                 population: this.props.data.population || "no data",
                 temperature: this.props.data.temperature || {
                     weather:  "no data",
@@ -27,14 +28,43 @@ class LargeInfo extends Component {
 
             }
         }
+        this.setImg = (country,city) =>{
+            if(city){
+                let exCity = exclusiveCity.filter(exclusive => {
+                    return exclusive.replace(/\s+/g,"").toLowerCase() == city.replace(/\s+/g,"").toLowerCase()
+                 })
+                 if (exCity.length != 0){
+                
+                     return exCity[0].replace(/\s+/g,"").toLowerCase()
+                 }
+            }
+            console.log(country)
+             let exCountry = exclusiveCountry.filter(exclusive => {
+             return exclusive.replace(/\s+/g,"").toLowerCase() == country.replace(/\s+/g,"").toLowerCase()
+          }) 
+          if (exCountry.length != 0){
+              console.log('bla')
+              return exCountry[0].replace(/\s+/g,"").toLowerCase()
+          } 
+          let countryGroup = groups.filter(group => {
+              return group.countries.includes(country.replace(/\s+/g,"").toLowerCase())
+          })
+            if (countryGroup.length != 0){
+                return countryGroup[0].name || "default"
+            }
+             return "default"
+         
+          }
+        
     }
 
     render() {
+        console.log(this.props.country)
         return (
 
             <div className="largeTile__content">
 
-                <img src={require(`../img/jpg/${this.state.data.country.replace(/\s+/g,"").toLowerCase()}.jpg`) || norway} alt="" class="largeTile__img"></img>
+                <img src={require(`../img/jpg/${this.setImg(this.state.data.country, this.state.data.city)}.jpg`) || norway} alt="" class="largeTile__img"></img>
                 <div className="largeTile__text">
                     <h1 class="primaryHeader primaryHeader--large">{this.state.data.city || this.state.data.village || this.state.data.county || "Countryside"}</h1>
                     <h1 class="primaryHeader primaryHeader--shaded">{this.state.data.country}</h1>
