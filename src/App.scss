@@ -83,6 +83,7 @@ body,html{
     left:5%;
     display:flex;
     align-items: center;
+    overflow: hidden;
     &__text{
         padding: $mediumSpace $interSpace;
         box-sizing: border-box;
@@ -92,9 +93,9 @@ body,html{
         width:580px;
         background-color:$primaryLight;
         border-bottom: 15px solid $primaryDark;
-        -webkit-box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.3);
-        -moz-box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.3);
-        box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.3);
+        -webkit-box-shadow: 0px 0px 17px 3px rgba(0,0,0,0.3);
+        -moz-box-shadow: 0px 0px 17px 3px rgba(0,0,0,0.3);
+        box-shadow: 0px 0px 17px 3px rgba(0,0,0,0.3);
     }
     &__img{
         width: 100%;
@@ -125,7 +126,7 @@ body,html{
 .smallTiles{
     position: absolute;
     width: 290px;
-    right: 5%;
+    right: 50px;
     top:25px;
     height: 850px;
     overflow:hidden;
@@ -175,3 +176,28 @@ body,html{
         height: 40px;
     }
 }
+
+.fade-enter{
+    opacity: 0;
+    transform: translateX(-25px)
+  }
+  /*koniec*/
+  .fade-enter.fade-enter-active{
+    opacity: 1;
+    transform: translateX(0);
+    /*jezeli chcemy miedzy enterem a exitem zrobic timeout, musimy dodac drugi parametr do transition 'property/czas/styl/timeout' wazne zeby ustawic to tak zeby suma byla zgodna z timeoutem podanym jako property do csstransition group
+    np 2500 czas 2500 timeout i 5000 w reactie wtedy musi byc*/
+    transition:  transform 500ms cubic-bezier(1,.05,.25,1), opacity 500ms ease-out;
+  }
+  .faded-enter{
+    opacity: 0;
+    padding-left: 50px;
+  }
+  /*koniec*/
+  .faded-enter.faded-enter-active{
+    opacity: 1;
+    padding-left: 0;
+    /*jezeli chcemy miedzy enterem a exitem zrobic timeout, musimy dodac drugi parametr do transition 'property/czas/styl/timeout' wazne zeby ustawic to tak zeby suma byla zgodna z timeoutem podanym jako property do csstransition group
+    np 2500 czas 2500 timeout i 5000 w reactie wtedy musi byc*/
+    transition:  padding-left 500ms cubic-bezier(1,.05,.25,1), opacity 500ms ease-out;
+  }

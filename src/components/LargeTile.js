@@ -7,6 +7,7 @@ import weather from '../img/svg/cloud.svg';
 import temperature from '../img/svg/thermometer.svg';
 import LargeInfo from './LargeInfo';
 import loader from '../img/svg/puffs.svg'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 
 class LargeTile extends Component {
@@ -38,7 +39,11 @@ class LargeTile extends Component {
                         <hr class="separator"></hr>
                         <p class="primaryHeader primaryHeader--shaded">Pick one of the places from gallery to get all the cool info about it.</p>
                         </div>
-                        : this.props.loading && !this.props.error ? <img src={loader} className="largeTile__loader"></img> : null}
+                        : this.props.loading && !this.props.error ?   
+                            <CSSTransition in={this.props.loading} appear={true} timeout={2500} classNames="fade">
+                            <img src={loader} className="largeTile__loader"></img>
+                            </CSSTransition> 
+                        : null}
                 
                     
                 </div>

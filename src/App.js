@@ -25,7 +25,7 @@ class App extends Component {
         lat: 51.505,
         lng: -0.09,
       },
-      zoom: 2,
+      zoom: 1,
       alreadySearched: false,
       currentLocation: null,
       validationError: false,
@@ -85,26 +85,9 @@ class App extends Component {
             }, err => {
              
               this.setState({loading: false, error: true})
-            }).then(() => {
-              return fetch(`http://api.population.io/1.0/population/${this.state.currentLocation.country}/2019-02-25/`)
-
-              }).then(res => {
-                if(!res.ok){
-                  throw new Error('Something went wrong');
-                }
-                return res.json();
-              }
-                ).then((res) => {
-                  let tempState = this.state.currentLocation
-                  let population = res.total_population.population > 999 && res.total_population.population < 1000000 ? (res.total_population.population / 1000).toFixed(1) + 'k' : res.total_population.population > 1000000 ? (res.total_population.population /1000000).toFixed(1) + 'm' : res.total_population.population
-                  tempState.population = population;
-                  this.setState({ currentLocation: tempState })
-
-
-                }, err => {
-                })
-                .then(() => {
-                 // return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${this.state.coords.lat}&lon=${this.state.coords.lon}&appid=ed658a8a7d75e969481fc9cc10e419a5`)
+            })
+            .then(() => {
+      
                  return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${this.state.coords.lat}&lon=${this.state.coords.lng}&appid=ed658a8a7d75e969481fc9cc10e419a5`)
                 }).then(res => {
                   if (!res.ok){
@@ -128,8 +111,7 @@ class App extends Component {
         return fetch(`https://us1.locationiq.com/v1/search.php?key=fa6fb95ab37515&q=${this.state.query}&format=json`)
       } else return Promise.reject(false)
       
-      /*this.setState({lat: data[0].lat,
-        lng: data[0].lon})*/
+  
     }
     this.handleClick = (e) => {
 
