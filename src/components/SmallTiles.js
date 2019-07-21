@@ -12,7 +12,7 @@ class SmallTiles extends Component {
         this.state = {
             places: places.places,
             position: 0,
-            interval: 3000,
+            interval: 2000,
             tileHeight: 450,
             direction: -1,
             stop: false,
@@ -58,7 +58,7 @@ class SmallTiles extends Component {
     }
     componentDidMount() {
         this.setState({appear:true})
-      this.intervalStart();
+        this.intervalStart();
       
       
       }

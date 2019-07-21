@@ -40,9 +40,7 @@ class LargeTile extends Component {
                         <p class="primaryHeader primaryHeader--shaded">Pick one of the places from gallery to get all the cool info about it.</p>
                         </div>
                         : this.props.loading && !this.props.error ?   
-                            <CSSTransition in={this.props.loading} appear={true} timeout={2500} classNames="fade">
                             <img src={loader} className="largeTile__loader"></img>
-                            </CSSTransition> 
                         : null}
                 
                     

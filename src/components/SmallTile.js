@@ -51,7 +51,8 @@ class SmallTile extends Component {
                 </div>
                 <hr class="separator"></hr>
                 <div class="smallTiles__info">
-                <h1 class="primaryHeader primaryHeader--ssmall">Info:</h1>
+                
+                <p className="primaryParagraph--small">{this.props.place.desc || ""}</p>
 
                 </div>
                 <div class="smallTiles__info">
