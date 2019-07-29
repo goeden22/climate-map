@@ -87,6 +87,7 @@ body,html{
     display:flex;
     align-items: center;
     overflow: hidden;
+    
     &__text{
         padding: $mediumSpace $interSpace;
         box-sizing: border-box;
@@ -99,6 +100,7 @@ body,html{
         -webkit-box-shadow: 0px 0px 17px 3px rgba(0,0,0,0.3);
         -moz-box-shadow: 0px 0px 17px 3px rgba(0,0,0,0.3);
         box-shadow: 0px 0px 17px 3px rgba(0,0,0,0.3);
+        overflow-y:scroll;
     }
     &__img{
         width: 100%;
@@ -118,6 +120,15 @@ body,html{
         height: 125px;
         margin: 250px auto 0 auto;
     }
+    &__reset{
+        background-color: $primaryLight;
+        position: absolute;
+        top:0;
+        right:0;
+        padding: $mediumSpace;
+        cursor:pointer;
+        z-index: 100;
+    }
 }
 
 .separator{
@@ -134,7 +145,13 @@ body,html{
     height: 850px;
     overflow:hidden;
     &__container{
-        @extend .largeTile;
+        position: absolute;
+        z-index: 661;
+        
+        display:flex;
+        align-items: center;
+        overflow: hidden;
+
         flex-direction: column;
         width:290px;
         left:0;
@@ -147,6 +164,7 @@ body,html{
         padding: $smallSpace $mediumSpace;
     }
     &__tile{
+        
         @extend .largeTile__tile;
         cursor: pointer;
         width: 290px;
@@ -172,6 +190,7 @@ body,html{
     &__info{
         display: flex;
         justify-content: space-between;
+        word-wrap:anywhere;
     
     }
     &__icon{
@@ -215,7 +234,39 @@ body,html{
   @media screen and (max-width: $break-medium) {
     .topNav{
         width: 100%
+        
     }
+    .topNav__optionName{
+        display: none;
+    }
+    .topNav__icon{
+        margin: 0
+    }
+   
+  
+    
+    
+  }
+  @media screen and (max-width: 640px) {
+    
+    .largeTile{
+        width: 90%;
+    }
+    .primaryHeader--medium{
+        font-size: 17px;
+    }
+    .largeTile__icon{
+        height: 28px;
+    }
+    .topNav__search{
+        width: 80%;
+    }
+    .smallTiles{
+        left: 15px;
+        margin: 0 auto;
+    }
+ 
+    
   }
   @media screen and (max-height: $break-vertical) {
     .smallTiles{

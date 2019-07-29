@@ -31,17 +31,20 @@ class App extends Component {
       validationError: false,
       error: false,
       loading: false,
-      query: ""
+      query: "",
+      width: window.innerWidth,
+      activeWindow: false,
+      smallView: window.innerWidth < 1120
     }
 
     this.modeSelect = (mode) => {
       this.setState({ mode,
       alreadySearched: false,
-    error: false });    
+    error: false ,  activeWindow:false});    
     }
 
     this.handleSubmit = (query) => {
-      this.setState({validationError: false,currentLocation: null, error: false})
+      this.setState({validationError: false,currentLocation: null, error: false,  activeWindow:true})
 
       let tempQuery = query.replace(/\s/g, '');
       let testRegEx = RegExp('^[a-zA-Z0-9]*$', 'g')
@@ -54,6 +57,9 @@ class App extends Component {
         query: query.trim()}, this.APIChain)
       
 
+    }
+    this.nextSearch = () => {
+      this.setState({activeWindow: false})
     }
 
     this.APIChain = () => {
@@ -102,7 +108,7 @@ class App extends Component {
                 }, err => {
                   this.setState({loading: false})
                 }).then(() => { this.setState({ alreadySearched: true,
-                  loading: false }); })
+                  loading: false}); })
 
     }
 
@@ -122,7 +128,8 @@ class App extends Component {
       this.setState({
         coords: e.latlng,
         error: false,
-        loading: true
+        loading: true,
+        activeWindow:true,
       })
       this.APIChain();
     
@@ -132,20 +139,26 @@ class App extends Component {
       if(this.state.mode != "explore"){
         return false
       }
-      this.setState({coords, error: false, loading: true}, this.APIChain)
+      this.setState({coords, error: false, loading: true, activeWindow:true}, this.APIChain)
 
     }
   }
 
   
   render() {
+    let smallView = () => {
+      return window.innerWidth < 1120
+  }
     const mode = this.state.mode
+    console.log(smallView(), this.state.alreadySearched)
     return (
+      
       <div className="App">
         <TopNav onModeChange={this.modeSelect.bind(this)} handleSubmit={this.handleSubmit.bind(this)} />
         <MapContainer lat={this.state.coords.lat} lng={this.state.coords.lng} handleClick={this.handleClick.bind(this)} />
-        <LargeTile alreadySearched={this.state.alreadySearched} mode={this.state.mode} data={this.state.currentLocation} loading={this.state.loading} error={this.state.error}/> {mode == "explore" ? <SmallTiles handleClick={this.setFromGallery.bind(this)} /> : null}
-
+        {smallView() && !this.state.activeWindow ? "" :
+        <LargeTile nextSearch={this.nextSearch.bind(this)}width={this.state.width} alreadySearched={this.state.alreadySearched} mode={this.state.mode} data={this.state.currentLocation} loading={this.state.loading} error={this.state.error}/> } {mode == "explore" && (!this.state.activeWindow && smallView()) || mode == "explore" && !smallView() ? <SmallTiles handleClick={this.setFromGallery.bind(this)} /> : null}
+      
       </div>
     );
   }

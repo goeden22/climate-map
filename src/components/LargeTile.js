@@ -14,16 +14,25 @@ class LargeTile extends Component {
     constructor(props) {
         super(props);
         
-
+        this.state = {
+            appear:false
+        }
     }
 
+    componentDidMount(){
+        this.setState({appear:true})   
+     }
+
     render() {
-        
+        let smallView = () => {
+            return this.props.width > 1120
+        }
         return (
             
             <div className="largeTile">
                 <div class="largeTile__tile">
-                {this.props.error ? <h1>ERROR</h1> : (this.props.alreadySearched && this.props.mode == "point" && !this.props.loading) || (this.props.alreadySearched && this.props.mode == "search" && !this.props.loading)  || (this.props.alreadySearched && this.props.mode == "explore" && !this.props.loading) ?  <LargeInfo alreadySearched={this.props.alreadySearched} data={this.props.data} /> :
+                {this.props.alreadySearched && !this.props.loading ?<div className="largeTile__reset" onClick={this.props.nextSearch}><h1 className="secondaryHeader">Search again > </h1></div> : "" }
+                {(this.props.loading && !this.props.error) || !this.state.appear ?  <img src={loader} className="largeTile__loader"></img> : this.props.error ? <h1>ERROR</h1> : (this.props.alreadySearched && this.props.mode == "point" && !this.props.loading) || (this.props.alreadySearched && this.props.mode == "search" && !this.props.loading)  || (this.props.alreadySearched && this.props.mode == "explore" && !this.props.loading) ?  <LargeInfo alreadySearched={this.props.alreadySearched} data={this.props.data} /> :
                      !this.props.alreadySearched && this.props.mode =="point" && !this.props.loading ?
                         <div className="largeTile__notPointed largeTile__text">            
                         <h1 class="primaryHeader primaryHeader--large">Point your target</h1>
@@ -39,8 +48,6 @@ class LargeTile extends Component {
                         <hr class="separator"></hr>
                         <p class="primaryHeader primaryHeader--shaded">Pick one of the places from gallery to get all the cool info about it.</p>
                         </div>
-                        : this.props.loading && !this.props.error ?   
-                            <img src={loader} className="largeTile__loader"></img>
                         : null}
                 
                     
