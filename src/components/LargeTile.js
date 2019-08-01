@@ -7,6 +7,7 @@ import weather from '../img/svg/cloud.svg';
 import temperature from '../img/svg/thermometer.svg';
 import LargeInfo from './LargeInfo';
 import loader from '../img/svg/puffs.svg'
+import Error from './Error'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 
@@ -24,15 +25,13 @@ class LargeTile extends Component {
      }
 
     render() {
-        let smallView = () => {
-            return this.props.width > 1120
-        }
+
         return (
             
             <div className="largeTile">
                 <div class="largeTile__tile">
-                {this.props.alreadySearched && !this.props.loading ?<div className="largeTile__reset" onClick={this.props.nextSearch}><h1 className="secondaryHeader">Search again > </h1></div> : "" }
-                {(this.props.loading && !this.props.error) || !this.state.appear ?  <img src={loader} className="largeTile__loader"></img> : this.props.error ? <h1>ERROR</h1> : (this.props.alreadySearched && this.props.mode == "point" && !this.props.loading) || (this.props.alreadySearched && this.props.mode == "search" && !this.props.loading)  || (this.props.alreadySearched && this.props.mode == "explore" && !this.props.loading) ?  <LargeInfo alreadySearched={this.props.alreadySearched} data={this.props.data} /> :
+                {(this.props.alreadySearched && !this.props.loading && this.props.smallView) || (this.props.error && this.props.smallView)?<div className="largeTile__reset" onClick={this.props.nextSearch}><h1 className="secondaryHeader">Search again > </h1></div> : "" }
+                {(this.props.loading && !this.props.error) || !this.state.appear ?  <img src={loader} className="largeTile__loader"></img> : this.props.error ? < Error /> : (this.props.alreadySearched && this.props.mode == "point" && !this.props.loading) || (this.props.alreadySearched && this.props.mode == "search" && !this.props.loading)  || (this.props.alreadySearched && this.props.mode == "explore" && !this.props.loading) ?  <LargeInfo alreadySearched={this.props.alreadySearched} data={this.props.data} /> :
                      !this.props.alreadySearched && this.props.mode =="point" && !this.props.loading ?
                         <div className="largeTile__notPointed largeTile__text">            
                         <h1 class="primaryHeader primaryHeader--large">Point your target</h1>

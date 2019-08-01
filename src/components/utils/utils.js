@@ -10,5 +10,13 @@ function ifContains(array, value){
         return false
     }
 }
+function ifItHasDesc(array,value){
+   let tempValue = array.filter(el => {
+       return setSmall(el.name) === setSmall(value)
+   })
+   return tempValue.length > 0 ? tempValue[0].desc : false
+}
 
-module.exports = {setSmall, ifContains}
+
+
+module.exports = {setSmall, ifContains, ifItHasDesc}

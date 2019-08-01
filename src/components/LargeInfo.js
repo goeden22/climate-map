@@ -5,8 +5,8 @@ import people from '../img/svg/avatar.svg';
 import time from '../img/svg/time-left.svg';
 import weather from '../img/svg/cloud.svg';
 import temperature from '../img/svg/thermometer.svg';
-import {exclusiveCity, exclusiveCountry, groups} from '../data/validationList';
-import {setSmall, ifContains} from './utils/utils.js'
+import {exclusiveCity, exclusiveCountry, groups, exclusiveCityDesc, exclusiveCountryDesc} from '../data/validationList';
+import {setSmall, ifContains, ifItHasDesc} from './utils/utils.js'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 
@@ -51,6 +51,23 @@ class LargeInfo extends Component {
                 return "default"
             }
           }
+          this.setDesc = (city, country) => {
+              if(city){
+                  let exclusiveCity = ifItHasDesc(exclusiveCityDesc, city)
+                  if(exclusiveCity){
+                      return exclusiveCity
+                  }
+              }
+              let exclusiveCountry = ifItHasDesc(exclusiveCountryDesc, country)
+              if (exclusiveCountry){
+                  return exclusiveCountry
+              }
+              let countryFromGroup = groups.find(obj => {
+                  return obj.countries.includes(setSmall(country))
+              })
+              return countryFromGroup ? countryFromGroup.desc : "We couldn't find any info about this particular place"
+
+          }
             
           
         
@@ -60,8 +77,9 @@ class LargeInfo extends Component {
     }
 
     render() {
-    
+        console.log(ifItHasDesc(exclusiveCityDesc, 'jaipur'))
         return (
+            
             <CSSTransition in={this.state.appear} appear={true} timeout={500} classNames="fade">
             <div className="largeTile__content">
 
@@ -80,7 +98,7 @@ class LargeInfo extends Component {
                     </div>
                     <hr class="separator"></hr>
                     <h1 class="primaryHeader primaryHeader--small">Info:</h1>
-                    <p className="primaryParagraph">Because of Norway's high latitude, there are large seasonal variations in daylight. From late May to late July, the sun never completely descends beneath the horizon in areas north of the Arctic Circle (hence Norway's description as the "Land of the Midnight sun"), and the rest of the country experiences up to 20 hours of daylight per day. Conversely, from late November to late January, the sun never rises above the horizon in the north, and daylight hours are very short in the rest of the country.</p>
+                    <p className="primaryParagraph">{this.setDesc(this.state.data.city, this.state.data.country)}</p>
                 </div>
             </div>
             </ CSSTransition>

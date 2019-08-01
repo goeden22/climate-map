@@ -142,7 +142,15 @@ class App extends Component {
       this.setState({coords, error: false, loading: true, activeWindow:true}, this.APIChain)
 
     }
+    this.handleResize = () =>{
+      this.setState({smallView:window.innerWidth <1120})
+    }
+  
   }
+  componentDidMount() {
+    window.addEventListener("resize", this.handleResize);
+  }
+
 
   
   render() {
@@ -150,14 +158,14 @@ class App extends Component {
       return window.innerWidth < 1120
   }
     const mode = this.state.mode
-    console.log(smallView(), this.state.alreadySearched)
+    console.log()
     return (
       
-      <div className="App">
+      <div className="App" >
         <TopNav onModeChange={this.modeSelect.bind(this)} handleSubmit={this.handleSubmit.bind(this)} />
         <MapContainer lat={this.state.coords.lat} lng={this.state.coords.lng} handleClick={this.handleClick.bind(this)} />
-        {smallView() && !this.state.activeWindow ? "" :
-        <LargeTile nextSearch={this.nextSearch.bind(this)}width={this.state.width} alreadySearched={this.state.alreadySearched} mode={this.state.mode} data={this.state.currentLocation} loading={this.state.loading} error={this.state.error}/> } {mode == "explore" && (!this.state.activeWindow && smallView()) || mode == "explore" && !smallView() ? <SmallTiles handleClick={this.setFromGallery.bind(this)} /> : null}
+        {this.state.smallView && !this.state.activeWindow ? "" :
+        <LargeTile smallView={this.state.smallView} nextSearch={this.nextSearch.bind(this)}width={this.state.width} alreadySearched={this.state.alreadySearched} mode={this.state.mode} data={this.state.currentLocation} loading={this.state.loading} error={this.state.error}/> } {mode == "explore" && (!this.state.activeWindow && this.state.smallView) || mode == "explore" && !this.state.smallView ? <SmallTiles handleClick={this.setFromGallery.bind(this)} /> : null}
       
       </div>
     );
