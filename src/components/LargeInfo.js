@@ -77,7 +77,7 @@ class LargeInfo extends Component {
     }
 
     render() {
-        console.log(ifItHasDesc(exclusiveCityDesc, 'jaipur'))
+      
         return (
             
             <CSSTransition in={this.state.appear} appear={true} timeout={500} classNames="fade">

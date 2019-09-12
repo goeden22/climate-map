@@ -7,6 +7,7 @@ import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import MapContainer from './components/MapContainer'
 import LargeTile from './components/LargeTile'
 import SmallTiles from './components/SmallTiles'
+import Help from './components/Help'
 
 WebFont.load({
   google: {
@@ -162,6 +163,7 @@ class App extends Component {
     return (
       
       <div className="App" >
+        <Help />
         <TopNav onModeChange={this.modeSelect.bind(this)} handleSubmit={this.handleSubmit.bind(this)} />
         <MapContainer lat={this.state.coords.lat} lng={this.state.coords.lng} handleClick={this.handleClick.bind(this)} />
         {this.state.smallView && !this.state.activeWindow ? "" :

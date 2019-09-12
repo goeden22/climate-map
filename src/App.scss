@@ -1,7 +1,7 @@
 @import './typography.scss';
 @import './spacing.scss';
 
-@mixin transition($property) {
+@mixin transition($property...) {
 -webkit-transition: $property;
 -moz-transition: $property;
 -o-transition: $property;
@@ -26,7 +26,7 @@ body,html{
     position: absolute;
     z-index:800;
     -webkit-box-shadow: 0px 18px 22px 0px rgba(0,0,0,0.09);
-    -moz-box-shadow: 0px 18px 22px 0px rgba(0,0,0,0.09);
+    -moz-box-shadow: 0px 18px 22px 0px rgba(235, 140, 140, 0.09);
     box-shadow: 0px 18px 22px 0px rgba(0,0,0,0.15);
 
    
@@ -62,6 +62,10 @@ body,html{
         &__search{
             margin-left: $mediumSpace;
             border:none;
+        }
+        &__logo{
+            height: 25px;
+            
         }
 }
 .activeOption{
@@ -212,6 +216,95 @@ body,html{
         
     }
 }
+.help{
+    &__container{
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 800;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transform: translateX(-30px);
+        @include transition(opacity 300ms ease-out, transform 300ms ease-out);
+    }
+  
+ 
+    &__tile{
+        background: $primaryLight;
+        width: 500px;
+        height: 75vh;
+        -webkit-box-shadow: 0px 18px 22px 0px rgba(0,0,0,0.09);
+        -moz-box-shadow: 0px 18px 22px 0px rgba(0,0,0,0.09);
+        box-shadow: 0px 18px 22px 0px rgba(0,0,0,0.15);
+        position: relative;
+        overflow-y: scroll;
+   
+    }
+    &__logo{
+        margin: 15px 0 15px 15px;
+        height: 30px;
+    }
+    &__optionLogo{
+        width: 30px;
+        margin-right: 13px;
+    }
+    &__option{
+       display: flex;
+       justify-content: flex-start;
+       align-items: center;
+       margin: 10px 0 5px 15px;
+    }
+    &__optionDesc{
+        padding: 0px 25px;
+    }
+    &__innerButton{
+        position: absolute;
+        margin: 5px;
+        width: 23px;
+        height: 23px;
+        padding: 6px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 0;
+        right: 0;
+        border: 1px solid $shaded;
+        cursor: pointer;
+        &:hover{
+            background: #e9e9f0;
+        }
+    }
+    &__outerButton{
+      
+            position: fixed;
+            width: 23px;
+            height: 23px;
+            padding: 6px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            bottom: 0;
+            left: 0;
+            border: 1px solid $primaryShaded;
+            cursor: pointer;
+                background: $primaryLight;
+                &:hover{
+                    background: #e9e9f0;
+                }
+            z-index: 900;
+        
+    }
+    &__credits{
+        text-align: right;
+        padding: 25px;
+        margin-top: 30px;
+        font-size: 15px;
+    }
+}
 .fade-enter{
     opacity: 0;
     transform: translateX(-25px)
@@ -221,6 +314,10 @@ body,html{
     opacity: 1;
     transform: translateX(0);
     transition:  transform 500ms cubic-bezier(1,.05,.25,1), opacity 500ms ease-out;
+  }
+  .fade-enter-done{
+    opacity: 1;
+    transform: translateX(0);
   }
   .faded-enter{
     opacity: 0;
@@ -233,6 +330,10 @@ body,html{
 
     transition:  padding-left 500ms cubic-bezier(1,.05,.25,1), opacity 500ms ease-out;
   }
+  .faded-enter-done{
+    opacity: 1;
+    padding-left: 0;
+  }
 
   /*MEDIA QUERIES*/
 
@@ -243,7 +344,11 @@ body,html{
   }
   @media screen and (max-width: $break-medium) {
     .topNav{
-        width: 100%
+        width: 100%;
+        &__logo{
+            height: 15px;
+            padding: 0 3px;
+        }
         
     }
     .topNav__optionName{
@@ -258,9 +363,21 @@ body,html{
     
   }
   @media screen and (max-width: 640px) {
-    
+    .help{
+        &__tile{
+            width: 80%;
+        }
+    }
     .largeTile{
         width: 90%;
+        &__stat{
+            font-size:17px;
+            margin-right: 5px;
+        }
+        &__icon{
+            height: 28px;
+            margin-right: 2px;
+        }
     }
     .primaryHeader--medium{
         font-size: 17px;

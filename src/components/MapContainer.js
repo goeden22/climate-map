@@ -19,9 +19,6 @@ class MapContainer extends React.Component {
         />
         <ZoomControl position="bottomright" />
         <Marker position={position}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
         </Marker>
         
       </Map>

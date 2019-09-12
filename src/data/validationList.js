@@ -69,12 +69,14 @@ let groups = [
         countries:[
             "portugal", //
             "spain", //
-        ]
+        ],
+        desc: "Portugal and Spain are mainly characterized by a warm temperate, mediterranean climate with a distinct wet season in winter. During winter, Portugal experiences a similar temperature pattern to the Spanish coastal towns, i.e. average daytime maxima of about 16°C (61°F). However, the Portuguese resorts are much wetter, with only about 14 dry days on average. On average 5-6 hours of sunshine can be expected per day. A gradual warming-up process takes place during the spring months, daytime average maximum temperatures reaching up to 22°C (72°F) by May. The Atlantic-facing coast remains wetter than the Mediterranean-facing Spanish coast, with about 18 dry days per month. "
     },
     {
         name:"unitedkingdom",
         countries: ["unitedkingdom", //
-        "ireland",]
+        "ireland"],
+        desc: "The United Kingdom straddles the higher mid-latitudes between 49° and 61° N on the western seaboard of Europe. Since the UK is always in or close to the path of the polar front jet stream, frequent changes in pressure and unsettled weather are typical. Many types of weather can be experienced in a single day. In general the climate of the UK is cool and often cloudy, and high temperatures are infrequent. The climate in the United Kingdom is defined as a temperate oceanic climate, or Cfb on the Köppen climate classification system, a classification it shares with most of north-west Europe. Regional climates are influenced by the Atlantic Ocean and latitude. Northern Ireland, Wales and western parts of England and Scotland, being closest to the Atlantic Ocean, are generally the mildest, wettest and windiest regions of the UK, and temperature ranges here are seldom extreme. Eastern areas are drier, cooler, and less windy, and also experience the greatest daily and seasonal temperature variations. Northern areas are generally cooler and wetter, and have slightly larger temperature ranges than southern areas. "
     },
     {name: "subsaharian",
     countries: ["angola",
