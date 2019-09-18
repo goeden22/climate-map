@@ -74,7 +74,7 @@ body,html{
 
 //MAP
 .mapContainer{
-    height: 100%;
+    height: 100vh;
     width:100%;
     cursor: crosshair;
 }
@@ -218,6 +218,7 @@ body,html{
 }
 .help{
     &__container{
+        background: #000000AA;
         width: 100%;
         height: 100vh;
         position: fixed;
@@ -231,7 +232,10 @@ body,html{
         transform: translateX(-30px);
         @include transition(opacity 300ms ease-out, transform 300ms ease-out);
     }
-  
+    &__switch{
+        width: 20px;
+        height: 20px;
+    }
  
     &__tile{
         background: $primaryLight;
@@ -264,8 +268,6 @@ body,html{
     &__innerButton{
         position: absolute;
         margin: 5px;
-        width: 23px;
-        height: 23px;
         padding: 6px;
         display: flex;
         justify-content: center;
@@ -305,35 +307,7 @@ body,html{
         font-size: 15px;
     }
 }
-.fade-enter{
-    opacity: 0;
-    transform: translateX(-25px)
-  }
-  /*koniec*/
-  .fade-enter.fade-enter-active{
-    opacity: 1;
-    transform: translateX(0);
-    transition:  transform 500ms cubic-bezier(1,.05,.25,1), opacity 500ms ease-out;
-  }
-  .fade-enter-done{
-    opacity: 1;
-    transform: translateX(0);
-  }
-  .faded-enter{
-    opacity: 0;
-    padding-left: 50px;
-  }
-  /*koniec*/
-  .faded-enter.faded-enter-active{
-    opacity: 1;
-    padding-left: 0;
 
-    transition:  padding-left 500ms cubic-bezier(1,.05,.25,1), opacity 500ms ease-out;
-  }
-  .faded-enter-done{
-    opacity: 1;
-    padding-left: 0;
-  }
 
   /*MEDIA QUERIES*/
 
@@ -349,15 +323,17 @@ body,html{
             height: 15px;
             padding: 0 3px;
         }
+        &__icon{
+            margin: 0 5px;
+        }
+        &__optionName{
+            display: none;
+        }
         
     }
-    .topNav__optionName{
-        display: none;
-    }
-    .topNav__icon{
-        margin: 0
-    }
-   
+ 
+
+
   
     
     
@@ -371,20 +347,15 @@ body,html{
     .largeTile{
         width: 90%;
         &__stat{
-            font-size:17px;
+            font-size:16px;
             margin-right: 5px;
         }
         &__icon{
-            height: 28px;
+            height: 23px;
             margin-right: 2px;
         }
     }
-    .primaryHeader--medium{
-        font-size: 17px;
-    }
-    .largeTile__icon{
-        height: 28px;
-    }
+
     .topNav__search{
         width: 80%;
     }
@@ -401,3 +372,5 @@ body,html{
         top: 100px;
     }
   }
+
+  @import './TransitionGroup.scss';

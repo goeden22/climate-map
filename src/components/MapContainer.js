@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Map, TileLayer, Marker, Popup, ZoomControl } from 'react-leaflet'
+import React from 'react'
+import { Map, TileLayer, Marker, ZoomControl } from 'react-leaflet'
 import '../App.scss';
 
 

@@ -4,7 +4,7 @@ function setSmall(string){
 function ifContains(array, value){
     if(array.map(val => {return setSmall(val)}).includes(setSmall(value))){
         return setSmall(array.find(c => {
-            return setSmall(c) == setSmall(value)
+            return setSmall(c) === setSmall(value)
         }))
     } else{
         return false

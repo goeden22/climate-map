@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../App.scss';
 import people from '../img/svg/avatar.svg';
 import time from '../img/svg/time-left.svg';
-import weather from '../img/svg/cloud.svg';
+
 import {exclusiveCity, exclusiveCountry} from '../data/validationList';
 
 
@@ -14,16 +14,16 @@ class SmallTile extends Component {
 
         this.setImg = (country, city) => {
            let exCity = exclusiveCity.filter(exclusive => {
-              return exclusive.replace(/\s+/g,"").toLowerCase() == city.replace(/\s+/g,"").toLowerCase()
+              return exclusive.replace(/\s+/g,"").toLowerCase() === city.replace(/\s+/g,"").toLowerCase()
            })
-           if (exCity.length != 0){
+           if (exCity.length !== 0){
           
                return exCity[0].replace(/\s+/g,"").toLowerCase()
            }
            let exCountry = exclusiveCountry.filter(exclusive => {
-           return exclusive.replace(/\s+/g,"").toLowerCase() == country.replace(/\s+/g,"").toLowerCase()
+           return exclusive.replace(/\s+/g,"").toLowerCase() === country.replace(/\s+/g,"").toLowerCase()
         }) 
-        if (exCountry.length != 0){
+        if (exCountry.length !== 0){
             return exCountry[0].replace(/\s+/g,"").toLowerCase()
         }
             return 'default'

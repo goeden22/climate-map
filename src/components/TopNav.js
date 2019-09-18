@@ -24,10 +24,10 @@ class TopNav extends Component {
         return (
             <div className="topNav" onClick={this.handleModeChange}>
             <div className="topNav__container"><div class="topNav__logoContainer">
-            <h2 className="secondaryHeader secondaryHeader--logo"><img className="topNav__logo" src={logo}></img></h2></div>
-            <TopNavOption option="search" icon={loupe} active={this.state.mode == "search" ? true : false} handleSubmit={this.props.handleSubmit}/>
-            <TopNavOption option="point" icon={target} active={this.state.mode == "point" ? true : false}/>
-            <TopNavOption option="explore" icon={slider} active={this.state.mode == "explore" ? true : false}/></div>
+            <h2 className="secondaryHeader secondaryHeader--logo"><img className="topNav__logo" alt="logo" src={logo}></img></h2></div>
+            <TopNavOption option="search" icon={loupe} active={this.state.mode === "search" ? true : false} handleSubmit={this.props.handleSubmit}/>
+            <TopNavOption option="point" icon={target} active={this.state.mode === "point" ? true : false}/>
+            <TopNavOption option="explore" icon={slider} active={this.state.mode === "explore" ? true : false}/></div>
             </div>
         );
     }

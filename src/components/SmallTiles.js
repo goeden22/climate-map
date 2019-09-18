@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../App.scss';
 import SmallTile from './SmallTile';
 import places from '../data/places';
-import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import { CSSTransition} from 'react-transition-group'
 
 
 class SmallTiles extends Component {

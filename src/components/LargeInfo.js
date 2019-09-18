@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import '../App.scss';
 import norway from '../img/jpg/norway.jpg';
-import people from '../img/svg/avatar.svg';
 import time from '../img/svg/time-left.svg';
 import weather from '../img/svg/cloud.svg';
 import temperature from '../img/svg/thermometer.svg';
 import {exclusiveCity, exclusiveCountry, groups, exclusiveCityDesc, exclusiveCountryDesc} from '../data/validationList';
 import {setSmall, ifContains, ifItHasDesc} from './utils/utils.js'
-import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import { CSSTransition} from 'react-transition-group'
 
 
 
@@ -90,11 +89,11 @@ class LargeInfo extends Component {
                     <div class="largeTile__icons">
         
                         <img src={time} alt="" class="largeTile__icon"></img>
-                        <h1 class="primaryHeader primaryHeader--medium">UTC+1</h1>
+                        <h1 class="primaryHeader primaryHeader--medium largeTile__stat">UTC+1</h1>
                         <img src={weather} alt="" class="largeTile__icon"></img>
-                        <h1 class="primaryHeader primaryHeader--medium">{this.state.data.temperature.weather || "undefined"}</h1>
+                        <h1 class="primaryHeader primaryHeader--medium largeTile__stat">{this.state.data.temperature.weather || "undefined"}</h1>
                         <img src={temperature} alt="" class="largeTile__icon"></img>
-                        <h1 class="primaryHeader primaryHeader--temperature">{!this.state.data.temperature.temperature ? "no data" : this.state.data.temperature.temperature + "°C"} </h1>
+                        <h1 class="primaryHeader primaryHeader--temperature largeTile__stat">{!this.state.data.temperature.temperature ? "no data" : this.state.data.temperature.temperature + "°C"} </h1>
                     </div>
                     <hr class="separator"></hr>
                     <h1 class="primaryHeader primaryHeader--small">Info:</h1>

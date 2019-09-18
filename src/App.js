@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.scss';
 import TopNav from './components/TopNav';
 import WebFont from 'webfontloader';
-import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 import MapContainer from './components/MapContainer'
 import LargeTile from './components/LargeTile'
 import SmallTiles from './components/SmallTiles'
@@ -114,7 +112,7 @@ class App extends Component {
     }
 
     this.runGeoAPI = (mode) => {
-      if (mode == "search"){
+      if (mode === "search"){
         return fetch(`https://us1.locationiq.com/v1/search.php?key=fa6fb95ab37515&q=${this.state.query}&format=json`)
       } else return Promise.reject(false)
       
@@ -122,7 +120,7 @@ class App extends Component {
     }
     this.handleClick = (e) => {
 
-      if(this.state.mode != "point"){
+      if(this.state.mode !== "point"){
         return false
       }
       
@@ -137,7 +135,7 @@ class App extends Component {
     }
      
     this.setFromGallery = (coords) => {
-      if(this.state.mode != "explore"){
+      if(this.state.mode !== "explore"){
         return false
       }
       this.setState({coords, error: false, loading: true, activeWindow:true}, this.APIChain)
@@ -155,9 +153,7 @@ class App extends Component {
 
   
   render() {
-    let smallView = () => {
-      return window.innerWidth < 1120
-  }
+
     const mode = this.state.mode
     console.log()
     return (
@@ -167,7 +163,7 @@ class App extends Component {
         <TopNav onModeChange={this.modeSelect.bind(this)} handleSubmit={this.handleSubmit.bind(this)} />
         <MapContainer lat={this.state.coords.lat} lng={this.state.coords.lng} handleClick={this.handleClick.bind(this)} />
         {this.state.smallView && !this.state.activeWindow ? "" :
-        <LargeTile smallView={this.state.smallView} nextSearch={this.nextSearch.bind(this)}width={this.state.width} alreadySearched={this.state.alreadySearched} mode={this.state.mode} data={this.state.currentLocation} loading={this.state.loading} error={this.state.error}/> } {mode == "explore" && (!this.state.activeWindow && this.state.smallView) || mode == "explore" && !this.state.smallView ? <SmallTiles handleClick={this.setFromGallery.bind(this)} /> : null}
+        <LargeTile smallView={this.state.smallView} nextSearch={this.nextSearch.bind(this)}width={this.state.width} alreadySearched={this.state.alreadySearched} mode={this.state.mode} data={this.state.currentLocation} loading={this.state.loading} error={this.state.error}/> } {mode === "explore" && (!this.state.activeWindow && this.state.smallView) || mode === "explore" && !this.state.smallView ? <SmallTiles handleClick={this.setFromGallery.bind(this)} /> : null}
       
       </div>
     );

@@ -35,16 +35,16 @@ class Help extends Component {
                 <CSSTransition in={this.state.active} appear={true} timeout={500} classNames="fade">
                 <div className="help__container">
               <div className="help__tile">
-              <img className="help__logo" src={logo}></img>
+              <img className="help__logo" src={logo} alt="logo"></img>
               <p className="help__optionDesc primaryParagraph">Welcome to my climate app, you can use multpiple tools to check current weather and temperature with climate description in choosen place.</p>
-              <div className="help__option"><img className="help__optionLogo" src={loupe}></img><h2 className="secondaryHeader">Search</h2></div>
+              <div className="help__option"><img className="help__optionLogo" src={loupe} alt="loupe"></img><h2 className="secondaryHeader">Search</h2></div>
               <p className="help__optionDesc primaryParagraph">You can type name of any place that you want in search bar, engine will find it on the map and return info about current weather and temperature with short description of climate.</p>
-              <div className="help__option"><img className="help__optionLogo" src={target}></img><h2 className="secondaryHeader">Point</h2></div>
+              <div className="help__option"><img className="help__optionLogo" src={target} alt="target"></img><h2 className="secondaryHeader">Point</h2></div>
               <p className="help__optionDesc primaryParagraph">
               Just click on any place on the map with cursor, or tap screen of your touchscreen in any place on the map you want to get info about this place and its climate</p>
-              <div className="help__option"><img className="help__optionLogo" src={slider}></img><h2 className="secondaryHeader">Explore</h2></div>
+              <div className="help__option"><img className="help__optionLogo" src={slider} alt="slider"></img><h2 className="secondaryHeader">Explore</h2></div>
               <p className="help__optionDesc primaryParagraph">Check my gallery of one of the most beautiful cities in the world, just click on any of the featured places to locate it on the map and get information about current weather</p>
-              <div className="help__innerButton" onClick={this.toggle.bind(this)} ><img src={x}></img></div>
+              <div className="help__innerButton" onClick={this.toggle.bind(this)} ><img className="help__switch" src={x} alt="x"></img></div>
               <h2 className="primaryParagraph help__credits">Made by Aleksander Pilarski - <a href="https://github.com/goeden22">Check my github account</a></h2>
               </div>
               </div>
@@ -52,7 +52,7 @@ class Help extends Component {
               : ""    
         }
               
-                <div className="help__outerButton" onClick={this.toggle.bind(this)}><img src={information}></img></div>
+                <div className="help__outerButton" onClick={this.toggle.bind(this)}><img className="help__switch" src={information} alt="?"></img></div>
                 
             </div>
         );
