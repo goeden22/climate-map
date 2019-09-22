@@ -7,7 +7,8 @@ class TopNavOption extends Component {
         
         this.state = {
             tempQuery: "",
-            validationError: false
+            validationError: false,
+            option: this.props.option
         }
         this.textInput = React.createRef();
 
@@ -36,7 +37,7 @@ class TopNavOption extends Component {
         return (
             <div className={"topNav__option" + (this.props.active ? ' activeOption' : '')} name={this.props.option} style={this.props.active &&  this.props.option === "search" ? {flex: 3} : {flex: 1}}>
                 <h2 className="secondaryHeader topNav__optionName">{this.props.option}</h2>
-                {this.props.option === "search" ? <form onSubmit={this.onHandleSubmit}><input  onChange={this.handleChange} type="text" ref={this.textInput} className={`topNav__search primaryHeader primaryHeader--smedium ${this.state.validationError ? "topNav__error" : ""}`} style={this.props.active ? {display: 'inline'} : {display:"none"}}></input>{this.state.validationError ? <h2 className="topNav__errorMessage">Only alphanumeric or postcodes, 3+ characters</h2> : ""}</form> : null}
+                {this.state.option === "search" ? <form style={this.props.active ? {display: 'inline'} : {display:"none"}} onSubmit={this.onHandleSubmit}><input  onChange={this.handleChange} type="text" ref={this.textInput} className={`topNav__search primaryHeader primaryHeader--smedium ${this.state.validationError ? "topNav__error" : ""}`} ></input>{(this.state.validationError) ? <h2 className="topNav__errorMessage">Only alphanumeric or postcodes, 3+ characters</h2> : ""}</form> : ""}
                 <img src={this.props.icon} class="topNav__icon" alt="option__icon"></img>
                 
             </div>
