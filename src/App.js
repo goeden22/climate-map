@@ -45,13 +45,6 @@ class App extends Component {
     this.handleSubmit = (query) => {
       this.setState({validationError: false,currentLocation: null, error: false,  activeWindow:true})
 
-      let tempQuery = query.replace(/\s/g, '');
-      let testRegEx = RegExp('^[a-zA-Z0-9]*$', 'g')
-      if(!testRegEx.test(tempQuery) || tempQuery.length < 3){
-        this.setState({validationError: true})
-        return false
-      }
-
       this.setState({loading: true,
         query: query.trim()}, this.APIChain)
       
@@ -65,19 +58,31 @@ class App extends Component {
       
 
       this.runGeoAPI(this.state.mode).then(data => {
+        console.log(data)
+        if(data.status !== 200){
+          console.log(data)
+          return Promise.reject({status: "locationerror"})
+        }
         return data.json();
       }, err => {
-        throw new Error('not this mode')
+        return Promise.reject({status:"modeerror"})
       }).then(data => {
           this.setState({coords:{
             lat: data[0].lat,
         lng: data[0].lon}})
       }, err =>{
-        return false
+        console.log(err)
+        if(err.status === "locationerror"){
+          this.setState({loading: false, error: true})
+          throw new Error("location error")
+        }
+        
       })
       .then(() => {
         console.log(this.state.coords)
         return fetch(`https://us1.locationiq.com/v1/reverse.php?key=fa6fb95ab37515&lat=${this.state.coords.lat}&lon=${this.state.coords.lng}&format=json&accept-language=en`)
+      }, err => {
+        return {ok: false}
       })
         .then(data => {
           if(!data.ok){
@@ -87,18 +92,27 @@ class App extends Component {
         }).then(res => {
             console.log(res)
             this.setState({ currentLocation: res.address });
+            return true
             }, err => {
              
               this.setState({loading: false, error: true})
+              return false
             })
-            .then(() => {
-      
+            .then((returned) => {
+                  if(!returned){
+                    throw new Error("wrong location")
+                  }
                  return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${this.state.coords.lat}&lon=${this.state.coords.lng}&appid=ed658a8a7d75e969481fc9cc10e419a5`)
                 }).then(res => {
+                  
                   if (!res.ok){
+                    
                     throw new Error("error")
                   }
                   return res.json();
+                }, err => {
+                  this.setState({loading: false, error: true})
+                  throw new Error("error")
                 }).then((data) => {
                   let tempState = this.state.currentLocation;
                   tempState.temperature = {temperature : (Math.floor(data.main.temp) -273),
@@ -114,7 +128,7 @@ class App extends Component {
     this.runGeoAPI = (mode) => {
       if (mode === "search"){
         return fetch(`https://us1.locationiq.com/v1/search.php?key=fa6fb95ab37515&q=${this.state.query}&format=json`)
-      } else return Promise.reject(false)
+      } else return Promise.reject("wrong mode")
       
   
     }

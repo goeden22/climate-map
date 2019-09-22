@@ -55,7 +55,7 @@ body,html{
             cursor: auto;
         }
         &__icon{
-            margin-left: $mediumSpace;
+            margin: 0 0 0 $mediumSpace;
             width: 25px;
             height: 25px;
         }
@@ -66,6 +66,18 @@ body,html{
         &__logo{
             height: 25px;
             
+        }
+        &__error{
+            background-color: #ffd9d1;
+            border: 1px solid #eb512a;
+        }
+        &__errorMessage{
+            @extend .primaryParagraph;
+            padding: 4px;
+            position: absolute;
+            z-index: 900;
+            background-color: #ffd9d1;
+            border: 1px solid #eb512a;
         }
 }
 .activeOption{

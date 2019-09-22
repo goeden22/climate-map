@@ -6,7 +6,8 @@ class TopNavOption extends Component {
         super(props)
         
         this.state = {
-            tempQuery: ""
+            tempQuery: "",
+            validationError: false
         }
 
         this.handleChange = (e) => {
@@ -14,6 +15,15 @@ class TopNavOption extends Component {
         }
         this.onHandleSubmit = (e) => {
             e.preventDefault();
+            this.setState({validationError: false})
+            let tempQuery = this.state.tempQuery.replace(/\s/g, '');
+            let testRegEx = RegExp('^[a-zA-Z0-9-]*$', 'g')
+            if(!testRegEx.test(tempQuery) || tempQuery.length < 3){
+              this.setState({validationError: true})
+              return false
+              
+            }
+            
             this.props.handleSubmit(this.state.tempQuery)
         }
     }
@@ -23,7 +33,7 @@ class TopNavOption extends Component {
         return (
             <div className={"topNav__option" + (this.props.active ? ' activeOption' : '')} name={this.props.option} style={this.props.active &&  this.props.option === "search" ? {flex: 3} : {flex: 1}}>
                 <h2 className="secondaryHeader topNav__optionName">{this.props.option}</h2>
-                {this.props.option === "search" ? <form onSubmit={this.onHandleSubmit}><input onChange={this.handleChange} type="text" className={'topNav__search primaryHeader primaryHeader--smedium'} style={this.props.active ? {display: 'inline'} : {display:"none"}}></input></form> : null}
+                {this.props.option === "search" ? <form onSubmit={this.onHandleSubmit}><input onChange={this.handleChange} type="text" className={`topNav__search primaryHeader primaryHeader--smedium ${this.state.validationError ? "topNav__error" : ""}`} style={this.props.active ? {display: 'inline'} : {display:"none"}}></input>{this.state.validationError ? <h2 className="topNav__errorMessage">Please use only alphanumeric characters or postcodes</h2> : ""}</form> : null}
                 <img src={this.props.icon} class="topNav__icon" alt="option__icon"></img>
                 
             </div>
