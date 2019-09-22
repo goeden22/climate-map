@@ -58,9 +58,8 @@ class App extends Component {
       
 
       this.runGeoAPI(this.state.mode).then(data => {
-        console.log(data)
+
         if(data.status !== 200){
-          console.log(data)
           return Promise.reject({status: "locationerror"})
         }
         return data.json();
@@ -71,7 +70,6 @@ class App extends Component {
             lat: data[0].lat,
         lng: data[0].lon}})
       }, err =>{
-        console.log(err)
         if(err.status === "locationerror"){
           this.setState({loading: false, error: true})
           throw new Error("location error")
@@ -79,7 +77,7 @@ class App extends Component {
         
       })
       .then(() => {
-        console.log(this.state.coords)
+
         return fetch(`https://us1.locationiq.com/v1/reverse.php?key=fa6fb95ab37515&lat=${this.state.coords.lat}&lon=${this.state.coords.lng}&format=json&accept-language=en`)
       }, err => {
         return {ok: false}
@@ -90,7 +88,6 @@ class App extends Component {
           }
           return data.json();
         }).then(res => {
-            console.log(res)
             this.setState({ currentLocation: res.address });
             return true
             }, err => {
@@ -169,7 +166,7 @@ class App extends Component {
   render() {
 
     const mode = this.state.mode
-    console.log()
+
     return (
       
       <div className="App" >
