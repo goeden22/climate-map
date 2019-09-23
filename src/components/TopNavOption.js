@@ -29,6 +29,7 @@ class TopNavOption extends Component {
             
             this.props.handleSubmit(this.state.tempQuery)
             this.textInput.current.blur();
+            this.textInput.current.value = ""
         }
     }
 
