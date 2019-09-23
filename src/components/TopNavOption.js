@@ -13,7 +13,7 @@ class TopNavOption extends Component {
         this.textInput = React.createRef();
 
         this.handleChange = (e) => {
-            this.setState({tempQuery: e.target.value})
+            this.setState({tempQuery: e.target.value, validationError: false})
         }
         this.onHandleSubmit = (e) => {
             e.preventDefault();
@@ -38,7 +38,9 @@ class TopNavOption extends Component {
             <div className={"topNav__option" + (this.props.active ? ' activeOption' : '')} name={this.props.option} style={this.props.active &&  this.props.option === "search" ? {flex: 3} : {flex: 1}}>
                 <h2 className="secondaryHeader topNav__optionName">{this.props.option}</h2>
                 {this.state.option === "search" ? <form style={this.props.active ? {display: 'inline'} : {display:"none"}} onSubmit={this.onHandleSubmit}><input  onChange={this.handleChange} type="text" ref={this.textInput} className={`topNav__search primaryHeader primaryHeader--smedium ${this.state.validationError ? "topNav__error" : ""}`} ></input>{(this.state.validationError) ? <h2 className="topNav__errorMessage">Only alphanumeric or postcodes, 3+ characters</h2> : ""}</form> : ""}
-                <img src={this.props.icon} class="topNav__icon" alt="option__icon"></img>
+                <img src={this.props.icon} onClick={(e) => {if(this.props.option === "search"){
+                    this.onHandleSubmit(e);
+                }}} class="topNav__icon" alt="option__icon"></img>
                 
             </div>
         );

@@ -87,9 +87,7 @@ class LargeInfo extends Component {
                     <h1 class="primaryHeader primaryHeader--large">{this.state.data.city || this.state.data.village || this.state.data.county || "Countryside"}</h1>
                     <h1 class="primaryHeader primaryHeader--shaded">{this.state.data.country}</h1>
                     <div class="largeTile__icons">
-        
-                        <img src={time} alt="" class="largeTile__icon"></img>
-                        <h1 class="primaryHeader primaryHeader--medium largeTile__stat">UTC+1</h1>
+
                         <img src={weather} alt="" class="largeTile__icon"></img>
                         <h1 class="primaryHeader primaryHeader--medium largeTile__stat">{this.state.data.temperature.weather || "undefined"}</h1>
                         <img src={temperature} alt="" class="largeTile__icon"></img>
