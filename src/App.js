@@ -19,7 +19,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      mode: "search",
+      mode: "point",
       coords: {
         lat: 51.505,
         lng: -0.09,
