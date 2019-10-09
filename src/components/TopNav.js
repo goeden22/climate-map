@@ -10,7 +10,7 @@ class TopNav extends Component {
     constructor(props){
         super(props);
 
-        this.state = {mode: 'search'}
+        this.state = {mode: 'point'}
         this.handleModeChange = (e) => {
             let mode = e.target.getAttribute('name') || e.target.parentNode.getAttribute('name');
             if(mode){
