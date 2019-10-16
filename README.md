@@ -24,4 +24,4 @@ The build is minified and the filenames include the hashes.<br>
 
 Check live on
 
-https://tender-ptolemy-06b2d8.netlify.com/
+https://optimistic-heisenberg-650ecb.netlify.com/
